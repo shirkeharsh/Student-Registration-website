@@ -7,8 +7,8 @@ from email.mime.multipart import MIMEMultipart
 # SMTP server configuration
 smtp_server = 'mail.smtp2go.com'
 smtp_port = 2525
-smtp_username = 'jerry@hxrsh.me'
-smtp_password = 'fury@1337'
+smtp_username = 'me'
+smtp_password = 'f'
 
 print(f'Script Started')
 # Load registration data from CSV
