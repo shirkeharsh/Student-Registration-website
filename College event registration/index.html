@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parichay 2k24</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Heart Animation */
+        .heart {
+            text-decoration: none !important;
+            color: #fff;
+            font-size: 2rem;
+            display: inline-block;
+            animation: fade 2s infinite alternate, pulse 1.5s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .heart:hover {
+            transform: scale(1.2);
+        }
+
+        /* Fade animation */
+        @keyframes fade {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="magic-container">
+        <div id="magic"></div>
+    </div>
+    <div class="coming-soon">
+        <p><a href="parichay-registration.php"><button type="button" class="btnn btnn1">Registration link</button></a></p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd1zXc25NG_FFjjh4S0hyki7GzEpv1ZcXUWA4ihVQtyZ3WzBA/viewform"><button type="button" class="btnn btnn2">Participation Link</button></a></p>
+        <p><a href="dashboard.php"><button type="button" class="btnn btnn2">Dashboard</button></a></p>
+    </div>
+
+    <footer class="footer mt-auto py-3">
+        <div class="d-flex container justify-content-center">
+            <span style="color: white; position: fixed; bottom: 0; font-size: 1.2rem;" class="p-2">
+                Made with <a href="https://www.instagram.com/harshrshirke/" class="heart">
+                    <span style="text-shadow: 0 0 20px red, 0 0 40px red;">❤️</span>
+                </a>
+            </span>
+        </div>
+    </footer>
+
+    <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
+    <script>
+        var wa_btnSetting = {"btnColor":"#0ad13c","ctaText":"","cornerRadius":40,"marginBottom":8,"marginLeft":7,"marginRight":10,"btnPosition":"left","whatsAppNumber":"919833696934","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
+        window.onload = () => {
+            _waEmbed(wa_btnSetting);
+        };
+    </script>
+
+    <script src="./assets/js/magic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r125/three.min.js"></script>
+    <script type="x-shader/x-vertex" id="vertexshader">
+        attribute float size;
+        attribute vec3 customColor;
+        varying vec3 vColor;
+
+        void main() {
+
+          vColor = customColor;
+          vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+          gl_PointSize = size * ( 300.0 / -mvPosition.z );
+          gl_Position = projectionMatrix * mvPosition;
+
+        }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentshader">
+        uniform vec3 color;
+        uniform sampler2D pointTexture;
+
+        varying vec3 vColor;
+
+        void main() {
+        
+         gl_FragColor = vec4( color * vColor, 1.0 );
+         gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );
+        
+        }
+    </script>
+
+</body>
+
+</html>
