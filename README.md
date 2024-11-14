@@ -29,6 +29,5 @@ A streamlined college registration system that allows students to register with 
 - Enhanced analytics for admin insights
 - Email notifications for registration updates
 
-## License
 
-This project is open-source and available under the MIT License.
+
